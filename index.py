@@ -6,10 +6,7 @@ from flask import Flask, render_template, redirect, url_for, request
 
 app = Flask(__name__)
 
-
-
 def convert_datetime():
-    
     today = date.today()
 
     months = {
@@ -31,8 +28,6 @@ def convert_datetime():
     return f"{today.day} {month} {today.year}"
 
 
-
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -49,4 +44,4 @@ def screener():
     return render_template("screener.html", name=name, date=date)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
