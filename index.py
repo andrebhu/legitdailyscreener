@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import secrets
+
 from datetime import date
 from flask import Flask, render_template, redirect, url_for, request
 
@@ -28,6 +30,7 @@ def convert_datetime():
     return f"{today.day} {month} {today.year}"
 
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -39,9 +42,8 @@ def screener():
         return redirect(url_for("index"))
     
     name = request.form['name']
-    date = convert_datetime()
 
-    return render_template("screener.html", name=name, date=date)
+    return render_template("screener.html", name=name, date=convert_datetime())
 
 if __name__ == "__main__":
     app.run()
