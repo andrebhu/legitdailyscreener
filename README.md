@@ -1,0 +1,3 @@
+# legitdailyscreener
+
+rip fastdailyscreener
