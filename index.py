@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 import os
-import secrets
 import logging
+import secrets
+import requests
 
 from datetime import date
 from dotenv import load_dotenv
@@ -11,14 +12,16 @@ from flask import Flask, render_template, redirect, url_for, request
 
 load_dotenv()
 
-handler = LogtailHandler(source_token=os.getenv('LOGTAIL_TOKEN'))
+# lt_token = os.getenv('LOGTAIL_TOKEN')
+# handler = LogtailHandler(source_token="t9d5qhmHTyrZ4ug2v1dzj9hF")
 
 app = Flask(__name__)
 
-logger = logging.getLogger(__name__)
-logger.handlers = []
-logger.setLevel(logging.INFO)
-logger.addHandler(handler)
+# logger = logging.getLogger(__name__)
+# logger.handlers = []
+# logger.setLevel(logging.INFO)
+# logger.addHandler(handler)
+
 
 
 def convert_datetime():
@@ -55,7 +58,8 @@ def screener():
     
     name = request.form['name']
 
-    logger.info(f'{name} has used the screener!')
+    # logger.info(f'{name} has used the screener!')
+    print(f"{name} has used the screener!")
 
     return render_template("screener.html", name=name, date=convert_datetime())
 
